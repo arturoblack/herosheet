@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdToolbarModule, MdGridListModule } from '@angular/material';
+import { MdInputModule, MdSelectModule, MdButtonModule, MdToolbarModule, MdGridListModule } from '@angular/material';
 
 import 'hammerjs';
 
@@ -18,7 +19,10 @@ import { SheetComponent } from './sheet/sheet.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MdToolbarModule,
+    MdInputModule,
+    MdSelectModule,
     MdGridListModule
   ],
   providers: [],
