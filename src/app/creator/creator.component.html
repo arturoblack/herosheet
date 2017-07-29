@@ -1,0 +1,153 @@
+<div class="timeline">
+  <ol>
+    <li> Lanzamiento de datos </li>
+    <li> raza y subraza </li>
+    <li> Clases y niveles </li>
+    <li> transfondo </li>
+    <li> subida de nivel</li>
+    <li> armas y armaduras  </li>
+    <li> Equipo </li>
+  </ol>
+</div>
+<!-- Step 1 Dices -->
+<div class="dices">
+  <div class="pure-g">
+    <!-- dices table -->
+    <div class="pure-u-1-2">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th> Caracteristica</th>
+              <th> Puntuación</th>
+              <th> Modificador</th>
+              <th> Dados</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> Fuerza</td>
+              <td> {{str}}</td>
+              <td> {{core.abilityModifier(str)}}</td>
+              <td> [{{str_score[0]}}][{{str_score[1]}}][{{str_score[2]}}][{{str_score[3]}}]</td>
+            </tr>
+            <tr>
+              <td> Destreza</td>
+              <td> {{dex}}</td>
+              <td> {{core.abilityModifier(dex)}}</td>
+              <td> [{{dex_score[0]}}][{{dex_score[1]}}][{{dex_score[2]}}][{{dex_score[3]}}]</td>
+            </tr>
+            <tr>
+              <td> Constitución</td>
+              <td> {{con}}</td>
+              <td> {{core.abilityModifier(con)}}</td>
+              <td> [{{con_score[0]}}][{{con_score[1]}}][{{con_score[2]}}][{{con_score[3]}}]</td>
+            </tr>
+            <tr>
+              <td> Inteligencia</td>
+              <td> {{int}}</td>
+              <td> {{core.abilityModifier(int)}}</td>
+              <td> [{{int_score[0]}}][{{int_score[1]}}][{{int_score[2]}}][{{int_score[3]}}]</td>
+            </tr>
+            <tr>
+              <td> Saviduria</td>
+              <td> {{wis}}</td>
+              <td> {{core.abilityModifier(wis)}}</td>
+              <td> [{{wis_score[0]}}][{{wis_score[1]}}][{{wis_score[2]}}][{{wis_score[3]}}]</td>
+            </tr>
+            <tr>
+              <td> Carisma</td>
+              <td> {{cha}}</td>
+              <td> {{core.abilityModifier(cha)}}</td>
+              <td> [{{cha_score[0]}}][{{cha_score[1]}}][{{cha_score[2]}}][{{cha_score[3]}}]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- roll options -->
+    <div class="pure-u-1-2">
+      <h3> Lanzar dados 3/4</h3>
+      <p>
+        <button type="button" name="button" (click)="roll()">Lanzar</button>
+      </p>
+      <hr>
+      <h3> Repartir puntos</h3>
+      <p> <button type="button" name="button">repartir</button></p>
+      <hr>
+      <h3> Asignar manualmente</h3>
+      <p> <button type="button" name="button">asignar</button></p>
+    </div>
+  </div>
+  <div class="">
+    <button type="button" name="button">Siguiente</button>
+  </div>
+</div>
+<!-- Step 2 Race -->
+<div class="race">
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <p>
+        <md-select placeholder="Races" name="race" (change)="srace = null" [(ngModel)]="race">
+          <md-option *ngFor="let race of races | async" [value]="race">
+            {{race.name}}
+          </md-option>
+        </md-select>
+      </p>
+      <p *ngIf="race">
+        <md-select placeholder="Sub Races" name="srace" [(ngModel)]="srace" >
+          <md-option *ngFor="let srace of race.subraces | keys" [value]="srace.value">
+            {{ srace.value.name }}
+          </md-option>
+        </md-select>
+      </p>
+    </div>
+    <div class="pure-u-1-2">
+      <h3>
+        <span *ngIf="race && !srace">
+          {{race.name}}
+        </span>
+        <span *ngIf="srace">
+          {{srace.name}}
+        </span>
+      </h3>
+      <div class="">
+        Detalles:
+        <div class="box" *ngIf="race && srace">
+          <header class="p4">
+            Ability Scores
+          </header>
+          <div class="">
+            <ul>
+              <li *ngFor="let score of race.ability_scores | keys">{{score.key}}: {{score.value}}</li>
+              <li *ngFor="let score of srace.ability_scores | keys">{{score.key}}: {{score.value}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+
+  </div>
+</div>
+<!-- Step 3 Classes -->
+<div class="classes">
+  <div class="pure-g" *ngFor="let clas of hero_classes">
+    <p>
+      <md-select placeholder="Classes" name="clas" (change)="path = null" [(ngModel)]="clas">
+        <md-option *ngFor="let clas of classes | async" [value]="clas">
+          {{clas.name}}
+        </md-option>
+      </md-select>
+    </p>
+  </div>
+  <div class="">
+    <button type="button" name="button" (click)="hero_classes.push({name:''})"> Agregar Clase</button>
+  </div>
+</div>
+<!-- Step 4 Dices -->
+<!-- Step 5 Dices -->
+<!-- Step 6 Dices -->
+<!-- Step 7 Dices -->
