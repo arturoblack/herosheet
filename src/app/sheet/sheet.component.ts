@@ -59,6 +59,10 @@ export class SheetComponent implements OnInit {
       { name: 'longsbow', profency: true, ability: 'dex', hit:'1d8', hit_bonnus: 0, damage_bonnus: 0, damage_type: 'piercing', aptitude: ''},
       { name: 'staf', profency: true, ability: 'str', hit:'1d4', hit_bonnus: 0, damage_bonnus: 0, damage_type: 'contundent', aptitude: ''},
     ],
+    armors: [
+      { name: 'chainmail', in_use: true, armor_class: 14, max_dex: 2},
+      { name: 'normal clothes', in_use: true, armor_class: 10, max_dex: 10},
+    ]
 
 
   };

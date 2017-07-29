@@ -1,4 +1,6 @@
-
+body{
+  color: #1A1A1A;
+}
 .heading{
   border: solid #CCC 1px;
   padding: 1.2em;
@@ -37,9 +39,16 @@
   .box .resalt{
     font-size: 2.2em;
   }
+  .box.score > div{
+    display: inline-block;
+  }
 
 .control-full-width {
   width: 100%;
+}
+small, .small{
+  font-size: 0.8;
+  color: #AAA;
 }
 .p4{
   padding: 0.4em;

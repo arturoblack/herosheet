@@ -92,7 +92,7 @@
       </div>
       <!-- inspiration, profency, skills and savings -->
       <div class="pure-u-2-3">
-        <section class="nn">
+        <section class="box score p8">
           <div class="score">
             0
           </div>
@@ -100,7 +100,7 @@
             Inspiración
           </div>
         </section>
-        <section class="box score">
+        <section class="box score p8">
           <div class="score">
             {{profencyBonnus()}}
           </div>
@@ -109,51 +109,57 @@
           </div>
         </section>
         <!-- savings -->
-        <div class="saving-throws">
-          <ul>
+        <div class="box saving-throws">
+          <div class="">
+            <ul>
             <li>
               <i class="fa fa-circle-o"></i>
-              4 Fuerza
+              {{ '4' | number:'2.0-0'}} Fuerza
             </li>
             <li>
               <i class="fa fa-circle-o"></i>
-              4 Destreza
+              {{ '4' | number:'2.0-0'}} Destreza
             </li>
             <li>
               <i class="fa fa-circle-o"></i>
-              4 Constitución
+              {{ '4' | number:'2.0-0'}} Constitución
             </li>
             <li>
               <i class="fa fa-circle-o"></i>
-              4 Inteligencia
+              {{ '4' | number:'2.0-0'}} Inteligencia
             </li>
             <li>
               <i class="fa fa-circle-o"></i>
-              4 Sabiduria
+              {{ '4' | number:'2.0-0'}} Sabiduria
             </li>
             <li>
               <i class="fa fa-circle-o"></i>
-              4 Carisma
+              {{ '4' | number:'2.0-0'}} Carisma
             </li>
           </ul>
+          </div>
+          <footer class="p4 center"> Saving Throws</footer>
         </div>
         <!-- skills -->
-        <div class="skills">
-          <ul>
+        <div class="box skills">
+          <div class="">
+            <ul>
             <li *ngFor="let skill of hero.skills">
               <i class="fa fa-circle-o"></i>
               <span [hidden]="!skill.profency">
                 <strong>
-                  {{ profencyBonnus() + abilityModifier(hero.ability_scores[skill.ability]) }}
+                  {{ profencyBonnus() + abilityModifier(hero.ability_scores[skill.ability]) | number:'2.0-0' }}
                 </strong>
               </span>
               <span [hidden]="skill.profency">
-                {{ abilityModifier(hero.ability_scores[skill.ability]) }}
+                {{ abilityModifier(hero.ability_scores[skill.ability]) | number:'2.0-0' }}
               </span>
               {{ skill.name}}
               <small>({{ skill.ability}}) </small>
             </li>
           </ul>
+          </div>
+          <footer class="p4 center"> Skills</footer>
         </div>
       </div>
     </div>
@@ -164,50 +170,56 @@
       <!-- AC Iniciative and speed -->
       <div class="pure-g">
         <div class="pure-u-1-3">
-          <div class="box center">
+          <section class="box center">
             <div class="resalt">
               {{ hero.armor_class }}
             </div>
             <footer class="p4"> Armor class</footer>
-          </div>
+          </section>
         </div>
         <div class="pure-u-1-3">
-          <div class="box center">
+          <section class="box center">
             <div class="resalt">
               {{ hero.iniciatie_bonnus + abilityModifier(hero.ability_scores.dex) }}
             </div>
             <footer class="p4"> Iniciative</footer>
-          </div>
+          </section>
         </div>
         <div class="pure-u-1-3">
-          <div class="box center">
+          <section class="box center">
             <div class="resalt">
               {{ hero.speed }}
             </div>
             <footer class="p4"> Speed</footer>
-          </div>
+          </section>
         </div>
       </div>
-      <!-- hit points -->
-      <section class="box center">
-        <header class="small p4">Puntos de golpe maximo {{hero.hit_points}}</header>
-        <div class="resalt">{{hero.hit_points - hero.damage}}</div>
-        <footer class="p4">puntos de golpe actuales</footer>
-      </section>
-      <!-- temporal hit point -->
-      <section class="box center">
-        <div class="resalt">0</div>
-        <footer class="p4">puntos Temporales</footer>
-      </section>
       <div class="pure-g">
-
+        <!-- hit points -->
+        <div class="pure-u-2-3">
+          <section class="box center">
+            <header class="small p4">Puntos de golpe maximo {{hero.hit_points}}</header>
+            <div class="resalt">{{hero.hit_points - hero.damage}}</div>
+            <footer class="p4">puntos de golpe actuales</footer>
+          </section>
+        </div>
+        <!-- temporal hit point -->
+        <div class="pure-u-1-3">
+          <section class="box center">
+            <div class="resalt">0</div>
+            <footer class="p4">puntos Temporales</footer>
+          </section>
+        </div>
+      </div>
+      <!-- hit dice and death saving -->
+      <div class="pure-g">
         <div class="pure-u-1-2">
           <section class="box center">
             <header class="small p4">
-              Total: {{totalLevel()}}d{{hit_dice}}
+              Total: {{totalLevel()}}d{{hero.hit_dice}}
             </header>
             <div class="resalt">
-              {{totalLevel()}}d{{hit_dice}}
+              {{totalLevel()}}d{{hero.hit_dice}}
             </div>
             <footer class="p4">hit dice </footer>
           </section>
@@ -233,8 +245,45 @@
         </div>
       </div>
     </div>
-    <div>
-
+    <!-- weapons -->
+    <div class="box">
+      <header class="p8">
+        weapons
+      </header>
+      <div class="p8">
+        <div class="pure-g" *ngFor="let weapon of hero.weapons">
+          <div class="pure-u-2-5">
+            {{weapon.name}}
+          </div>
+          <div class="pure-u-1-5">
+            1d20+4
+          </div>
+          <div class="pure-u-2-5">
+            {{weapon.hit}} + 8
+          </div>
+        </div>
+      </div>
+      <footer class="p4"></footer>
+    </div>
+    <!-- armors -->
+    <div class="box">
+      <header class="p8">
+        Armors
+      </header>
+      <div class="p8">
+        <div class="pure-g" *ngFor="let armor of hero.armors">
+          <div class="pure-u-2-5">
+            {{armor.name}}
+          </div>
+          <div class="pure-u-1-5">
+            {{armor.armor_class}} + 2
+          </div>
+          <div class="pure-u-2-5">
+            disce lvl
+          </div>
+        </div>
+      </div>
+      <footer class="p4"></footer>
     </div>
   </div>
   <div class="pure-u-1-3">bgs</div>
