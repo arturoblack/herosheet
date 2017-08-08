@@ -1,0 +1,115 @@
+<section class="dicemaster pure-g">
+  <header class="pure-u-1-1">
+    Puntos de caracteristica
+  </header>
+  <article class="pure-u-1-2">
+    <table class="pure-table pure-table-horizontal">
+      <thead>
+        <tr>
+          <th> Caracteristica</th>
+          <th> Punt. </th>
+          <th> Mod. </th>
+          <th> Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fuerza </td>
+          <td>
+            <md-input-container class="control-full-width">
+              <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.str" name="str">
+            </md-input-container>
+          </td>
+          <td>-1</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Destreza </td>
+          <td>
+            <md-input-container class="control-full-width">
+              <input mdInput placeholder="Destreza" [(ngModel)]="ability_scores.dex" name="dex">
+            </md-input-container>
+          </td>
+          <td>-1</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Constitución </td>
+          <td>
+            <md-input-container class="control-full-width">
+              <input mdInput placeholder="Constitución" [(ngModel)]="ability_scores.con" name="con">
+            </md-input-container>
+          </td>
+          <td>-1</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Inteligencia </td>
+          <td>
+            <md-input-container class="control-full-width">
+              <input mdInput placeholder="Inteligencia" [(ngModel)]="ability_scores.int" name="int">
+            </md-input-container>
+          </td>
+          <td>-1</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Sabiduria </td>
+          <td>
+            <md-input-container class="control-full-width">
+              <input mdInput placeholder="Sabiduria" [(ngModel)]="ability_scores.wis" name="wis">
+            </md-input-container>
+          </td>
+          <td>-1</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Carisma </td>
+          <td>
+            <md-input-container class="control-full-width">
+              <input mdInput placeholder="Carisma" [(ngModel)]="ability_scores.cha" name="cha">
+            </md-input-container>
+          </td>
+          <td>-1</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <aside class="pure-u-1-2">
+    <div class="">
+      <md-select placeholder="Tipo de Lanzamiento" [(ngModel)]="type" name="clas">
+        <md-option value="1"> 3d6 </md-option>
+        <md-option value="2"> 4d6 - 1d6(menor) </md-option>
+        <md-option value="3"> Puntos </md-option>
+        <md-option value="4"> Manual </md-option>
+      </md-select>
+    </div>
+    <div *ngIf="type === '1' || type === '2'">
+      <br>
+      <button class="pure-button pure-button-success" (click)="rols = roll($event, type)"> Lanzar Dados </button>
+      <div class="">
+        <ul>
+          <li *ngFor="let rol of rols">
+            <p>
+              {{totalRol(rol) | number:'2.0-1'}} -
+              [{{rol[0]}}] [{{rol[1]}}] [{{rol[2]}}] [{{rol[3] || '-'}} ]
+              <md-select name="asgin" (change)="setAbility($event, totalRol(rol))">
+                <md-option value=""></md-option>
+                <md-option value="str" [disabled]="isAsigned('str')"> Fuerza </md-option>
+                <md-option value="dex" [disabled]="isAsigned('dex')"> Destreza </md-option>
+                <md-option value="con" [disabled]="isAsigned('con')"> Constitución </md-option>
+                <md-option value="int" [disabled]="isAsigned('int')"> Inteligencia </md-option>
+                <md-option value="wis" [disabled]="isAsigned('wis')"> Sabiduria </md-option>
+                <md-option value="cha" [disabled]="isAsigned('cha')"> Carisma </md-option>
+              </md-select>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <footer class="pure-u-1-1">
+    <button class="pure-button pure-button-primary"> Siguiente -> </button>
+  </footer>
+</section>

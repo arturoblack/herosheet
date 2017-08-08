@@ -5,16 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdInputModule, MdSelectModule, MdButtonModule, MdToolbarModule, MdGridListModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 // New imports to update based on AngularFire2 version 4
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { HeroComponent } from './hero/hero.component';
 import { SheetComponent } from './sheet/sheet.component';
-import { CreatorComponent } from './creator/creator.component';
+// import { CreatorComponent } from './creator/creator.component';
+import { CrAbilityScoreComponent } from './mock/abilityScores.component';
+import { CrRaceComponent } from './mock/race.component';
+
 import { KeysPipe } from './keys.pipe';
+import { MockComponent } from './mock/mock.component';
 
 // import { CoreService } from './core.service';
 export const firebaseConfig = {
@@ -32,16 +36,19 @@ export const firebaseConfig = {
     AppComponent,
     HeroComponent,
     SheetComponent,
-    CreatorComponent,
-    KeysPipe
+    //CreatorComponent,
+    CrAbilityScoreComponent,
+    CrRaceComponent,
+    KeysPipe,
+    MockComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    // AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireDatabaseModule,
+    // AngularFireAuthModule,
     MdToolbarModule,
     MdInputModule,
     MdSelectModule,

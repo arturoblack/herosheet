@@ -4,7 +4,7 @@
   <span>DnD 5e Hero Creator</span>
 </md-toolbar>
 
-<div class="row columns">
+<!-- <div class="row columns">
   <button (click)="login()" *ngIf="!(user | async)?.uid">Anonymous Login</button>
   <button (click)="logout()" *ngIf="(user | async)?.uid">Logout</button>
   <input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="What is it that you do?" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msg_val" />
@@ -12,19 +12,10 @@
       <p *ngFor="let item of items | async">{{item.message}}</p>
   </div>
 </div>
-
 <hr>
-<app-creator></app-creator>
+-->
+
+
+<app-mock></app-mock>
+<!-- <app-creator></app-creator> -->
 <!-- <app-sheet></app-sheet> -->
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-    <li>
-      <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-    </li>
-  </ul>
