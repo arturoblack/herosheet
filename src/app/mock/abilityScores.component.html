@@ -15,62 +15,182 @@
       <tbody>
         <tr>
           <td>Fuerza </td>
-          <td>
-            <md-input-container class="control-full-width">
-              <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.str" name="str">
-            </md-input-container>
+          <td [ngSwitch]="type">
+            <span *ngSwitchCase="'1'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.str">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'2'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.str">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'3'">
+              Comprar puntos
+            </span>
+            <span *ngSwitchCase="'4'">
+              <md-input-container class="control-full-width">
+                <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.str" name="str">
+              </md-input-container>
+            </span>
+            <span  *ngSwitchDefault>
+              --
+            </span>
           </td>
-          <td>-1</td>
+          <td>{{_.abilityModifier(ability_scores.str)}}</td>
           <td></td>
         </tr>
         <tr>
           <td>Destreza </td>
-          <td>
-            <md-input-container class="control-full-width">
-              <input mdInput placeholder="Destreza" [(ngModel)]="ability_scores.dex" name="dex">
-            </md-input-container>
+          <td [ngSwitch]="type">
+            <span *ngSwitchCase="'1'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.dex">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'2'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.dex">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'3'">
+              Comprar puntos
+            </span>
+            <span *ngSwitchCase="'4'">
+              <md-input-container class="control-full-width">
+                <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.dex" name="str">
+              </md-input-container>
+            </span>
+            <span  *ngSwitchDefault>
+              --
+            </span>
           </td>
-          <td>-1</td>
+          <td>{{_.abilityModifier(ability_scores.dex)}}</td>
           <td></td>
         </tr>
         <tr>
           <td>Constitución </td>
-          <td>
-            <md-input-container class="control-full-width">
-              <input mdInput placeholder="Constitución" [(ngModel)]="ability_scores.con" name="con">
-            </md-input-container>
+          <td [ngSwitch]="type">
+            <span *ngSwitchCase="'1'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.con">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'2'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.con">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'3'">
+              Comprar puntos
+            </span>
+            <span *ngSwitchCase="'4'">
+              <md-input-container class="control-full-width">
+                <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.con" name="con">
+              </md-input-container>
+            </span>
+            <span  *ngSwitchDefault>
+              --
+            </span>
           </td>
-          <td>-1</td>
+          <td>{{_.abilityModifier(ability_scores.con)}}</td>
           <td></td>
         </tr>
         <tr>
           <td>Inteligencia </td>
-          <td>
-            <md-input-container class="control-full-width">
-              <input mdInput placeholder="Inteligencia" [(ngModel)]="ability_scores.int" name="int">
-            </md-input-container>
+          <td [ngSwitch]="type">
+            <span *ngSwitchCase="'1'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.int">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'2'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.int">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'3'">
+              Comprar puntos
+            </span>
+            <span *ngSwitchCase="'4'">
+              <md-input-container class="control-full-width">
+                <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.int" name="str">
+              </md-input-container>
+            </span>
+            <span  *ngSwitchDefault>
+              --
+            </span>
           </td>
-          <td>-1</td>
+          <td>{{_.abilityModifier(ability_scores.int)}}</td>
           <td></td>
         </tr>
         <tr>
           <td>Sabiduria </td>
-          <td>
-            <md-input-container class="control-full-width">
-              <input mdInput placeholder="Sabiduria" [(ngModel)]="ability_scores.wis" name="wis">
-            </md-input-container>
+          <td [ngSwitch]="type">
+            <span *ngSwitchCase="'1'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.wis">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'2'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.wis">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'3'">
+              Comprar puntos
+            </span>
+            <span *ngSwitchCase="'4'">
+              <md-input-container class="control-full-width">
+                <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.wis" name="wis">
+              </md-input-container>
+            </span>
+            <span  *ngSwitchDefault>
+              --
+            </span>
           </td>
-          <td>-1</td>
+          <td>{{_.abilityModifier(ability_scores.wis)}}</td>
           <td></td>
         </tr>
         <tr>
           <td>Carisma </td>
-          <td>
-            <md-input-container class="control-full-width">
-              <input mdInput placeholder="Carisma" [(ngModel)]="ability_scores.cha" name="cha">
-            </md-input-container>
+          <td [ngSwitch]="type">
+            <span *ngSwitchCase="'1'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.cha">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'2'">
+              <md-select name="asgin" [(ngModel)]="ability_scores.cha">
+                <md-option value=""></md-option>
+                <md-option *ngFor="let rol of rols" [value]="totalRol(rol)" [disabled]="diceInUse(totalRol(rol))"> {{totalRol(rol) | number:'2.0-1'}} </md-option>
+              </md-select>
+            </span>
+            <span *ngSwitchCase="'3'">
+              Comprar puntos
+            </span>
+            <span *ngSwitchCase="'4'">
+              <md-input-container class="control-full-width">
+                <input mdInput placeholder="Fuerza" type="number" min="3" max="20" [(ngModel)]="ability_scores.cha" name="str">
+              </md-input-container>
+            </span>
+            <span  *ngSwitchDefault>
+              --
+            </span>
           </td>
-          <td>-1</td>
+          <td>{{_.abilityModifier(ability_scores.cha)}}</td>
           <td></td>
         </tr>
       </tbody>
@@ -78,7 +198,7 @@
   </article>
   <aside class="pure-u-1-2">
     <div class="">
-      <md-select placeholder="Tipo de Lanzamiento" [(ngModel)]="type" name="clas">
+      <md-select placeholder="Tipo de Lanzamiento" [(ngModel)]="type" name="clas" (change)="clear()">
         <md-option value="1"> 3d6 </md-option>
         <md-option value="2"> 4d6 - 1d6(menor) </md-option>
         <md-option value="3"> Puntos </md-option>
@@ -91,18 +211,12 @@
       <div class="">
         <ul>
           <li *ngFor="let rol of rols">
-            <p>
+            <p *ngIf="diceInUse(totalRol(rol))" class="txt-gray">
+              {{totalRol(rol) | number:'2.0-1'}}  usado
+            </p>
+            <p *ngIf="!diceInUse(totalRol(rol))">
               {{totalRol(rol) | number:'2.0-1'}} -
               [{{rol[0]}}] [{{rol[1]}}] [{{rol[2]}}] [{{rol[3] || '-'}} ]
-              <md-select name="asgin" (change)="setAbility($event, totalRol(rol))">
-                <md-option value=""></md-option>
-                <md-option value="str" [disabled]="isAsigned('str')"> Fuerza </md-option>
-                <md-option value="dex" [disabled]="isAsigned('dex')"> Destreza </md-option>
-                <md-option value="con" [disabled]="isAsigned('con')"> Constitución </md-option>
-                <md-option value="int" [disabled]="isAsigned('int')"> Inteligencia </md-option>
-                <md-option value="wis" [disabled]="isAsigned('wis')"> Sabiduria </md-option>
-                <md-option value="cha" [disabled]="isAsigned('cha')"> Carisma </md-option>
-              </md-select>
             </p>
           </li>
         </ul>

@@ -7,7 +7,7 @@ export class CoreService {
 
   /// modifier number -> number
   abilityModifier(score: number): number {
-    return Math.round((score - 10) /2);
+    return Math.floor((score - 10) /2);
   }
 
   /// level Array<Clas> -> number
